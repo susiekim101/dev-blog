@@ -1,7 +1,7 @@
 import Header from "./Header/Header";
 import Title from "./Header/Title";
 import Recent from "./Recent/Recent";
-
+import AllPosts from "./AllPosts/AllPosts";
 const Blog = () => {
 
     return (
@@ -9,6 +9,7 @@ const Blog = () => {
             <Header/>
             <Title/>
             <Recent/>
+            <AllPosts/>
         </div>
     );
 }
