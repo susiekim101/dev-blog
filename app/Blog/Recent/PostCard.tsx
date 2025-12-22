@@ -35,7 +35,7 @@ const PostCard = ({ layout }: { layout: 'vertical' | 'horizontal' | 'responsive'
                     <ArrowUpRight className="text-xl group-hover:scale-105 transition-transform"/>
                 </div>
 
-                <p className='light:text-gray-500 dark:text-gray-300 line-clamp-2'>Subheadline goes here. How do you create compelling presentations that wow your colleagues so much</p>
+                <p className='text-gray-500 line-clamp-2'>Subheadline goes here. How do you create compelling presentations that wow your colleagues so much</p>
             
                 <div className='flex gap-2'>
                     <div className={`${topicTagClass('design')}`}>Design</div>

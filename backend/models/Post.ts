@@ -19,10 +19,13 @@ const PostSchema = new Schema({
         required: true,
         trim: true
     },
-    tags: [String],
+    tags: {
+        type: [String],
+        required: false
+    },
     featuredImage: {
         type: ImageSchema,
-        required: true
+        required: false
     },
     images: {
         type: [ImageSchema],
@@ -38,9 +41,6 @@ const PostSchema = new Schema({
     }
 });
 
-
-PostSchema.index({ title: 1 });
-
-const Post = mongoose.model('Post', PostSchema);
+const Post = mongoose.models.Post || mongoose.model('Post', PostSchema);
 
 export default Post;
