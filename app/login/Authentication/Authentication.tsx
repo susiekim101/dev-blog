@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 const Authentication = () => {
     const router = useRouter();
-    
+
     const handleLogin = async (data: FormData) => {
         const email = data.get('email');
         const password = data.get('password');
@@ -24,9 +24,10 @@ const Authentication = () => {
     };
 
     return (
-        <div>
-            <form action={handleLogin} className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-                <h2 className='font-bold text-center'>Admin Login</h2>
+        <div className='flex flex-col justify-center items-center'>
+            <h2 className='font-bold text-center text-xl'>Admin Login</h2>
+            <form action={handleLogin} className="fieldset rounded-box w-xs p-4">
+                
 
                 <label className="label">Email</label>
                 <input name='email' type="email" className="input" placeholder="Email" required/>
