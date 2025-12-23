@@ -7,8 +7,7 @@ const Footer = () => {
             <p>LinkedIn</p>
             <p>GitHub</p>
             <p>Email</p>
-            <Link href='/admin'>Admin</Link>
-
+            <Link href='/login'>Admin</Link>
         </div>
     )
 };

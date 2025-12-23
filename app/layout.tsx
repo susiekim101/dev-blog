@@ -3,6 +3,7 @@ import { Inter, Source_Code_Pro } from "next/font/google";
 
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
+import { AuthProvider } from "./components/auth-provider";
 
 const inter = Inter({ subsets: ['latin'] });
 export const source_code_pro = Source_Code_Pro({ subsets: ['latin']});
@@ -22,7 +23,9 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
           attribute="data-theme"
           defaultTheme="light"
           disableTransitionOnChange>
-        {children}
+          <AuthProvider>
+            {children}  
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
