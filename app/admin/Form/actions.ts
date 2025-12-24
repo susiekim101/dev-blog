@@ -14,6 +14,7 @@ interface PostData {
     title: string,
     subhead: string,
     body: string,
+    tags: string[],
     featuredImage: Image
 }
 
@@ -22,6 +23,8 @@ const addPost = async (data: FormData) => {
 
     const file = data.get('featuredImage') as File;
     let imageUrl = '';
+
+    const tagsArray = (data.get('tags') as string).split(',');
 
     try {
         if(file && file.size > 0) {
@@ -36,6 +39,7 @@ const addPost = async (data: FormData) => {
             title: data.get('title') as string || '',
             subhead: data.get('subhead') as string || '',
             body: data.get('body') as string || '',
+            tags: tagsArray,
             featuredImage: {
                 src: imageUrl,
                 alt: data.get('alt') as string || '',
@@ -47,8 +51,10 @@ const addPost = async (data: FormData) => {
         revalidatePath('/');
         
         console.log('Successfully uploaded post: ', post);
+        return { success: true };
     } catch (error) {
         console.error('Upload error: ', error);
+        return { success: false, error: 'Upload error'};
     }
 }
 

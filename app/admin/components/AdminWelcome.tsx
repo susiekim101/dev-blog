@@ -26,14 +26,16 @@ const AdminWelcome = () => {
             </div>
 
             <dialog ref={dialogRef} className='modal'>
-                <div className='modal-box w-11/12 max-w-5xl'>
+                <div className='modal-box w-11/12 max-w-5xl max-h-[40rem]'>
                     <Form/>
+
                     <div className='modal-action text-center m-1'>
                         <form method='dialog' className='w-full'>
                             <button className="w-full text-xs cursor-pointer">Cancel</button>
                         </form>
                     </div>
                 </div>
+
 
                 <form method='dialog' className='modal-backdrop'>
                     <button></button>
