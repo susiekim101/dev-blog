@@ -27,8 +27,6 @@ const Authentication = () => {
         <div className='flex flex-col justify-center items-center'>
             <h2 className='font-bold text-center text-xl'>Admin Login</h2>
             <form action={handleLogin} className="fieldset rounded-box w-xs p-4">
-                
-
                 <label className="label">Email</label>
                 <input name='email' type="email" className="input" placeholder="Email" required/>
 
