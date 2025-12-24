@@ -1,8 +1,15 @@
 import Image from "next/image";
-import dummy from "../../../public/dummy.jpg";
 import { ArrowUpRight } from 'lucide-react';
 import topicTagClass from "@/app/components/topic-tag";
-const PostCard = ({ layout }: { layout: 'vertical' | 'horizontal' | 'responsive' }) => {
+import type { PostData } from "@/app/admin/Form/actions";
+import Link from "next/link";
+interface PostCardProps {
+    layout: 'vertical' | 'horizontal' | 'responsive',
+    post: PostData
+}
+
+const PostCard = ({ layout, post }: PostCardProps) => {
+    if(!post) return null;
     const containerClass = {
         vertical: 'flex flex-col gap-2',
         horizontal: 'flex flex-col md:flex-row gap-2',
@@ -15,34 +22,43 @@ const PostCard = ({ layout }: { layout: 'vertical' | 'horizontal' | 'responsive'
         responsive: 'w-full lg:w-1/2 aspect-[16/9] lg:aspect-[21/9]' 
     }[layout];
 
+    const dateObj = new Date(post.createdAt);
+
+    const formattedDate = dateObj.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+    });
+
     return (
-        <div className={`${containerClass} h-full`}>
+        <Link href={`/post/${post._id}`} className={`${containerClass} h-fit`}>
             <figure className={`${imageClass} relative overflow-hidden`}>
                 <Image
-                    src={dummy}
+                    src={post.featuredImage.src}
                     alt="Banff"
                     className='object-cover'
                     fill/>
             </figure>
 
-            <div className="flex flex-col flex-1 p-0 justify-start gap-5">
-                <p className="text-purple-600 dark:text-purple-400 text-xs font-semibold">Dec 20, 2025</p>
+            <div className="flex flex-col flex-1 p-0 justify-start">
+                <p className="text-purple-600 dark:text-purple-400 text-xs font-semibold">{formattedDate}</p>
 
-                <div className="flex justify-between items-start group cursor-pointer">
+                <div className="flex justify-between items-start group cursor-pointer my-3">
                     <h2 className="text-xl font-bold">
-                        Headline goes here
+                        {post.title}
                     </h2>
                     <ArrowUpRight className="text-xl group-hover:scale-105 transition-transform"/>
                 </div>
 
-                <p className='text-gray-500 line-clamp-2'>Subheadline goes here. How do you create compelling presentations that wow your colleagues so much</p>
+                <p className='text-gray-500 line-clamp-2'>{post.subhead}</p>
             
-                <div className='flex gap-2'>
-                    <div className={`${topicTagClass('design')}`}>Design</div>
-                    <div className={`${topicTagClass('research')}`}>Research</div>
+                <div className='flex gap-2 mt-2'>
+                    {post.tags.map((tag, idx) => (
+                        <div key={idx} className={`badge rounded-lg ${topicTagClass(tag) || 'bg-gray-100 text-gray-600'}`}>{tag}</div>
+                    ))}
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 

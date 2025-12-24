@@ -4,17 +4,20 @@ import Post from "@/backend/models/Post";
 import { put } from "@vercel/blob";
 import { revalidatePath } from "next/cache";
 
-interface Image {
+export interface Image {
     src: string,
     alt: string,
     caption: string
 }
 
-interface PostData {
+export interface PostData {
+    _id?: string,
     title: string,
     subhead: string,
     body: string,
-    featuredImage: Image
+    tags: string[],
+    featuredImage: Image,
+    createdAt: number | string,
 }
 
 const addPost = async (data: FormData) => {
@@ -22,6 +25,8 @@ const addPost = async (data: FormData) => {
 
     const file = data.get('featuredImage') as File;
     let imageUrl = '';
+
+    const tagsArray = (data.get('tags') as string).split(',');
 
     try {
         if(file && file.size > 0) {
@@ -36,19 +41,23 @@ const addPost = async (data: FormData) => {
             title: data.get('title') as string || '',
             subhead: data.get('subhead') as string || '',
             body: data.get('body') as string || '',
+            tags: tagsArray,
             featuredImage: {
                 src: imageUrl,
                 alt: data.get('alt') as string || '',
                 caption: data.get('caption') as string || '',
-            }
+            },
+            createdAt: Date.now()
         };
 
         const post = await Post.create(postData);
         revalidatePath('/');
         
         console.log('Successfully uploaded post: ', post);
+        return { success: true };
     } catch (error) {
         console.error('Upload error: ', error);
+        return { success: false, error: 'Upload error'};
     }
 }
 

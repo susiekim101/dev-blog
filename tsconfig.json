@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "lib/database.js"  ],
+, "lib/database.js", "app/post/PostContainer"  ],
   "exclude": ["node_modules"]
 }
