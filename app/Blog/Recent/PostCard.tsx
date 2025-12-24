@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ArrowUpRight } from 'lucide-react';
 import topicTagClass from "@/app/components/topic-tag";
 import type { PostData } from "@/app/admin/Form/actions";
-
+import Link from "next/link";
 interface PostCardProps {
     layout: 'vertical' | 'horizontal' | 'responsive',
     post: PostData
@@ -31,7 +31,7 @@ const PostCard = ({ layout, post }: PostCardProps) => {
     });
 
     return (
-        <div className={`${containerClass} h-full`}>
+        <Link href={`/post/${post._id}`} className={`${containerClass} h-fit`}>
             <figure className={`${imageClass} relative overflow-hidden`}>
                 <Image
                     src={post.featuredImage.src}
@@ -40,10 +40,10 @@ const PostCard = ({ layout, post }: PostCardProps) => {
                     fill/>
             </figure>
 
-            <div className="flex flex-col flex-1 p-0 justify-start gap-5">
+            <div className="flex flex-col flex-1 p-0 justify-start">
                 <p className="text-purple-600 dark:text-purple-400 text-xs font-semibold">{formattedDate}</p>
 
-                <div className="flex justify-between items-start group cursor-pointer">
+                <div className="flex justify-between items-start group cursor-pointer my-3">
                     <h2 className="text-xl font-bold">
                         {post.title}
                     </h2>
@@ -52,13 +52,13 @@ const PostCard = ({ layout, post }: PostCardProps) => {
 
                 <p className='text-gray-500 line-clamp-2'>{post.subhead}</p>
             
-                <div className='flex gap-2'>
+                <div className='flex gap-2 mt-2'>
                     {post.tags.map((tag, idx) => (
                         <div key={idx} className={`badge rounded-lg ${topicTagClass(tag) || 'bg-gray-100 text-gray-600'}`}>{tag}</div>
                     ))}
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 

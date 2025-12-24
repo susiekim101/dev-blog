@@ -9,7 +9,7 @@ const Recent = () => {
 
     useEffect(() => {
         const getPosts = async () => {
-            const data = await fetchRecentPosts();
+            const data = await fetchRecentPosts(4);
             setRecentPosts(data);
         };
         getPosts();
