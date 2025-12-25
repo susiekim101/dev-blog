@@ -1,16 +1,15 @@
 import Header from "../Blog/Header/Header";
 import Footer from "../Blog/Footer/Footer";
-import AllPosts from "../Blog/AllPosts/AllPosts";
+import About from "./About";
 
-const AllBlogPage = () => {
-
+const AboutPage = () => {
     return (
         <div className="flex flex-col my-[1rem] mx-[5rem] gap-[1rem]">
             <Header/>
-            <AllPosts/>
+            <About/>
             <Footer/>
         </div>
-    );
+    )
 }
 
-export default AllBlogPage;
+export default AboutPage;

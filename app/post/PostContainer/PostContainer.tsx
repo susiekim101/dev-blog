@@ -1,6 +1,5 @@
 import RecentColumn from "../RecentColumn/RecentColumn";
 import Content from "../Content/Content";
-import type { ObjectId } from "mongoose";
 
 const PostContainer = ({id}: {id: string}) => {
 

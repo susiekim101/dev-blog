@@ -7,7 +7,7 @@ const Header = () => {
             <Link href='/' className="font-bold">{">"}_Hello Dev</Link>
             <div className="flex flex-row gap-[1rem]">
                 <Link href='/all'>Blog</Link>
-                <h1>About</h1>
+                <Link href='/about'>About</Link>
                 <ThemeToggle/>
             </div>
             
