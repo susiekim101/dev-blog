@@ -29,7 +29,7 @@ const Content = ({ id }: { id: string }) => {
     if(!post) return null;
 
     return (
-        <div className='col-span-3 flex flex-col gap-3'>
+        <div className='flex flex-col gap-3'>
                 <p className="text-purple-600 dark:text-purple-400 text-xs font-semibold mb-4">{formattedDate}</p>
 
                 <h1 className="text-3xl font-bold">

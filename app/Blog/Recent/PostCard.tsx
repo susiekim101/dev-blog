@@ -44,7 +44,7 @@ const PostCard = ({ layout, post }: PostCardProps) => {
                 <p className="text-purple-600 dark:text-purple-400 text-xs font-semibold">{formattedDate}</p>
 
                 <div className="flex justify-between items-start group cursor-pointer my-3">
-                    <h2 className="text-xl font-bold">
+                    <h2 className="text-lg font-bold">
                         {post.title}
                     </h2>
                     <ArrowUpRight className="text-xl group-hover:scale-105 transition-transform"/>
