@@ -2,3 +2,5 @@
 @plugin "daisyui" {
     themes: light --default, dark;
 }
+
+@variant dark (&:where(.dark, [data-theme="dark"], [data-theme="dark"] *));

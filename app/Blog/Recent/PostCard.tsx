@@ -31,7 +31,7 @@ const PostCard = ({ layout, post }: PostCardProps) => {
     });
 
     return (
-        <Link href={`/post/${post._id}`} className={`${containerClass} h-fit`}>
+        <Link href={`/post/${post._id}`} className={`${containerClass} h-fit hover:scale-102 transition-transform`}>
             <figure className={`${imageClass} relative overflow-hidden`}>
                 <Image
                     src={post.featuredImage.src}
@@ -50,7 +50,7 @@ const PostCard = ({ layout, post }: PostCardProps) => {
                     <ArrowUpRight className="text-xl group-hover:scale-105 transition-transform"/>
                 </div>
 
-                <p className='text-gray-500 line-clamp-2'>{post.subhead}</p>
+                <p className='text-gray-500 dark:text-gray-200 line-clamp-2'>{post.body}</p>
             
                 <div className='flex gap-2 mt-2'>
                     {post.tags.map((tag, idx) => (

@@ -1,16 +1,15 @@
-import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
-
+import DesktopHeader from "./DesktopHeader";
+import MobileHeader from "./MobileHeader";
 const Header = () => {
     return (
-        <div className="flex flex-row justify-between">
-            <Link href='/' className="font-bold">{">"}_Hello Dev</Link>
-            <div className="flex flex-row gap-[1rem]">
-                <Link href='/all'>Blog</Link>
-                <Link href='/about'>About</Link>
-                <ThemeToggle/>
+        <div>
+            <div className="hidden md:flex">
+                <DesktopHeader/>
             </div>
-            
+
+            <div className="md:hidden">
+                <MobileHeader/>
+            </div>
         </div>
     );
 }

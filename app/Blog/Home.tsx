@@ -6,7 +6,7 @@ import Footer from "./Footer/Footer";
 const Blog = () => {
 
     return (
-        <div className="flex flex-col my-[1rem] mx-[5rem] gap-[1rem]">
+        <div className="flex flex-col gap-[1rem]">
             <Header/>
             <Title/>
             <Recent/>
