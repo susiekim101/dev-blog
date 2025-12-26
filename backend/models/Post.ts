@@ -9,11 +9,6 @@ const PostSchema = new Schema({
         unique: true,
         trim: true
     },
-    subhead: {
-        type: String,
-        required: true,
-        trim: true
-    },
     body: {
         type: String,
         required: true,

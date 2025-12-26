@@ -36,14 +36,17 @@ const Content = ({ id }: { id: string }) => {
                     {post.title}
                 </h1>
 
-                <figure className='w-full aspect-[21/11] relative overflow-hidden my-3'>
-                    <Image
-                        src={post.featuredImage.src}
-                        alt={post.featuredImage.alt}
-                        className='object-cover'
-                        fill
-                    />
-                </figure>
+                <div className='my-3'>
+                    <figure className='w-full aspect-[21/11] relative overflow-hidden mb-1'>
+                        <Image
+                            src={post.featuredImage.src}
+                            alt={post.featuredImage.alt}
+                            className='object-cover'
+                            fill
+                        />
+                    </figure>
+                <p className='text-right text-sm italic text-gray-500 dark:text-gray-200'>{post.featuredImage.caption}</p>
+                </div>
 
                 <div>
                     {post.body.split('\n').map((paragraph, idx) => (
