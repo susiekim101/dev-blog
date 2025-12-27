@@ -12,7 +12,7 @@ const MobileDrawer = ( { isOpen, toggleIsOpen }: { isOpen: boolean, toggleIsOpen
                 <ThemeToggle/>
             </div>
 
-            <X onClick={toggleIsOpen} className={"fixed bottom-10 h-7 w-7"}></X>
+            <X onClick={toggleIsOpen} className="fixed bottom-10 h-7 w-7 cursor-pointer"></X>
         </div>
     );
 }

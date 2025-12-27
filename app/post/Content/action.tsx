@@ -2,7 +2,8 @@
 import dbConnect from "@/lib/database";
 import Post from "@/backend/models/Post";
 import type { PostData } from "@/app/admin/Form/actions";
-import type { ObjectId } from "mongoose";
+import { getServerSession } from "next-auth";
+
 const fetchPostById = async (postId: string) => {
     await dbConnect();
 
@@ -16,4 +17,25 @@ const fetchPostById = async (postId: string) => {
     }
 }
 
-export default fetchPostById;
+const checkIsAdmin = async () => {
+    const session = await getServerSession();
+    if(session)
+        return true;
+    else
+        return false;
+}
+
+const updateContent = async (postId: string, data: FormData) => {
+    await dbConnect();
+    const tagsArray = (data.get('tags') as string).split(', ');
+    
+    try {
+        const updatedPost = await Post.updateOne({ _id: postId }, {$set: { title: data.get('title'), body: data.get('body'), tags: tagsArray } })
+        console.log('Successfully updated post: ', updatedPost );
+        return JSON.parse(JSON.stringify(updatedPost));
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export { fetchPostById, checkIsAdmin, updateContent };

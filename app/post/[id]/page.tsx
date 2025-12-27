@@ -1,7 +1,7 @@
 import PostContainer from "../PostContainer/PostContainer";
 import Header from "../../Blog/Header/Header";
-
 import Footer from "../../Blog/Footer/Footer";
+
 const PostPage = async ({ params }: { params: Promise<{id: string}> }) => {
     const { id } = await params;
 

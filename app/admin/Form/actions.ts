@@ -13,7 +13,6 @@ export interface Image {
 export interface PostData {
     _id?: string,
     title: string,
-    subhead: string,
     body: string,
     tags: string[],
     featuredImage: Image,
@@ -26,7 +25,7 @@ const addPost = async (data: FormData) => {
     const file = data.get('featuredImage') as File;
     let imageUrl = '';
 
-    const tagsArray = (data.get('tags') as string).split(',');
+    const tagsArray = (data.get('tags') as string).split(', ');
 
     try {
         if(file && file.size > 0) {
@@ -36,10 +35,8 @@ const addPost = async (data: FormData) => {
             imageUrl = blob.url;
         }
         
-
         const postData: PostData = {
             title: data.get('title') as string || '',
-            subhead: data.get('subhead') as string || '',
             body: data.get('body') as string || '',
             tags: tagsArray,
             featuredImage: {

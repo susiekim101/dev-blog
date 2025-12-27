@@ -5,7 +5,9 @@ const topicTagClass = (topic: string) => {
         bfs: `bg-pink-100 text-pink-600`,
         dp: `bg-yellow-100 text-yellow-600`,
         greedy: `bg-red-100 text-red-600`,
-        'prefix sum': `bg-orange-100 text-orange-600`
+        'prefix sum': `bg-orange-100 text-orange-600`,
+        graph: `bg-amber-100 text-amber-600`,
+        dfs: `bg-emerald-100 text-emerald-600`
     }[topic.toLowerCase()];
     
     return topicClass;

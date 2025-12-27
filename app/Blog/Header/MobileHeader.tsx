@@ -16,7 +16,7 @@ const MobileHeader = () => {
         <div className="w-full flex flex-row justify-between items-center mb-5">
             <Link href='/' className="font-bold">{">"}_Hello Dev</Link>
             
-            <Menu className="w-5 h-5" onClick={toggleIsOpen}/>
+            <Menu className="w-5 h-5 cursor-pointer" onClick={toggleIsOpen}/>
             <MobileDrawer isOpen={isOpen} toggleIsOpen={toggleIsOpen}/>
 
         </div>
