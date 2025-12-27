@@ -48,9 +48,9 @@ const EditContent = ( { id, isEditing, toggleEditing }: { id: string, isEditing:
             { isEditing ? 
                 (<>
                 <form action={handleSavePost} key={isEditing ? 'editing' : 'viewing'}>
-                    <button className='cursor-pointer flex flex-row justify-center items-center gap-3 border border-blue-500 text-blue-500 px-2 py-1 w-fit rounded-lg mb-5 text-sm'
+                    <button className='cursor-pointer flex flex-row justify-center items-center gap-3 border border-blue-500 text-blue-500 dark:border-blue-400 dark:text-blue-400 px-2 py-1 w-fit rounded-lg mb-5 text-sm'
                         type="submit">
-                        <Check className='w-4 h-4 text-blue-500'/>
+                        <Check className='w-4 h-4 text-blue-500 dark:text-blue-400'/>
                         Save
                     </button>
 
@@ -71,13 +71,13 @@ const EditContent = ( { id, isEditing, toggleEditing }: { id: string, isEditing:
                             <p className='text-right text-sm italic text-gray-500 dark:text-gray-200'>{post.featuredImage.caption}</p>
                         </div>
 
-                        <TextareaAutosize name="body" className="textarea textarea-bordered w-full resize-none mb-4" defaultValue={bodyText} required></TextareaAutosize>
+                        <TextareaAutosize name="body" className="textarea border border-gray-300 p-2 rounded-md w-full resize-none mb-4" defaultValue={bodyText} required></TextareaAutosize>
                         <input type="text" name="tags" className="field-sizing-content border border-gray-300 p-2 rounded-md w-full mt-2" defaultValue={tagString} required></input>
                     </form>
                 </> ) : (<>
-                    <div className='cursor-pointer flex flex-row justify-center items-center gap-3 border border-blue-500 text-blue-500 px-2 py-1 w-fit rounded-lg mb-5 text-sm'
+                    <div className='cursor-pointer flex flex-row justify-center items-center gap-3 border border-blue-500 text-blue-500 dark:border-blue-400 dark:text-blue-400 px-2 py-1 w-fit rounded-lg mb-5 text-sm'
                         onClick={ () => toggleEditing() }>
-                        <Edit className='w-4 h-4 text-blue-500'/>
+                        <Edit className='w-4 h-4 text-blue-500 dark:text-blue-400'/>
                         Edit
                     </div>
                     <Content id={id}/>
